@@ -5,9 +5,9 @@ import {Sorting} from '../sorting';
 import {VisuallyHidden} from '../../../../shared/utils';
 import {PlaceCard} from '../../../../entities';
 
-export const Places:FC<PlacesProps> = ({numberPlacesToStay, nameCity, onListItemHover, listCities}) => {
+export const Places:FC<PlacesProps> = ({numberPlacesToStay, nameCity, onListItemHover, listOffers}) => {
   const [activeSorting, setActiveSorting] = useState<SortingOptionsValuesType>(SortingOptions.Popular);
-  const sortedPlaceCard = sortByType(listCities, activeSorting);
+  const sortedPlaceCard = sortByType(listOffers, activeSorting);
 
   return (
     <section className="cities__places places">

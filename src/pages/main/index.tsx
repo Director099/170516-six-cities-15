@@ -39,7 +39,7 @@ export const Main = () => {
                 numberPlacesToStay={filterOffers.length}
                 nameCity={currentCity}
                 onListItemHover={handleListItemHover}
-                listCities={filterOffers}
+                listOffers={filterOffers}
               /> : <CitiesEmpty/>}
             <div className="cities__right-section">
               {hasPlaces &&
