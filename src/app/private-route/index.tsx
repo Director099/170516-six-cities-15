@@ -1,14 +1,15 @@
 import {FC, ReactNode} from 'react';
 import {Navigate} from 'react-router-dom';
-import {Path, AuthorizationStatus} from '../../shared/config';
+import {Path} from '../../shared/config';
+import {hasAuthorization} from "../../shared/utils";
 
 type PrivateRouteProps = {
-  authorizationStatus: AuthorizationStatus;
   children: ReactNode;
+  redirectTo: Path
 }
 
-export const PrivateRoute:FC<PrivateRouteProps> = ({children, authorizationStatus}) => (
-  authorizationStatus === AuthorizationStatus.Auth
+export const PrivateRoute:FC<PrivateRouteProps> = ({children,  redirectTo}) => (
+  hasAuthorization()
     ? children
-    : <Navigate to={Path.Login} />
+    : <Navigate to={redirectTo} />
 );

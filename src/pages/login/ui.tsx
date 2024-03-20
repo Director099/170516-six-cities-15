@@ -1,27 +1,25 @@
 import {FormEvent, useRef} from 'react';
 import {Link, Navigate} from 'react-router-dom';
 import {Path} from '../../shared/config';
-import {VisuallyHidden} from '../../shared/utils';
-import {usePostAuthorizationMutation} from "./api";
+import {hasAuthorization, VisuallyHidden} from '../../shared/utils';
+import {usePostAuthorizationMutation} from './api';
 
 export const Login = () => {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const [postAuthorization] = usePostAuthorizationMutation();
 
-  const isAuth = false; //useAppSelector(chechkAuthStatus);
-
-  if (isAuth) {
+  if (hasAuthorization()) {
     return (
       <Navigate to={Path.Main} />
     );
   }
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
 
     if (!!loginRef.current && !!passwordRef.current) {
-      return postAuthorization({
+      postAuthorization({
         email: loginRef.current.value,
         password: passwordRef.current.value
       });

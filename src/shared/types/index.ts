@@ -4,6 +4,14 @@ export type LocationProps = {
   zoom: number;
 }
 
+export type UserProp = {
+  name: string
+  avatarUrl: string
+  isPro: boolean
+  email: string
+  token: string
+}
+
 export type NameCitiesProps = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 
 export type PreviewCardProps = {

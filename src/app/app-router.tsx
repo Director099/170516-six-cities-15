@@ -1,7 +1,7 @@
 import {createBrowserRouter} from 'react-router-dom';
 import {PrivateRoute} from './private-route';
 import {Layout} from './layout';
-import {Path, AuthorizationStatus} from '../shared/config';
+import {Path} from '../shared/config';
 import {Main, Login, Favorites, Offer, NotFound} from '../pages';
 
 export const routes = createBrowserRouter([
@@ -18,7 +18,7 @@ export const routes = createBrowserRouter([
       },
       {
         element:
-          <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+          <PrivateRoute redirectTo={Path.Login}>
             <Favorites/>
           </PrivateRoute>,
         path: Path.Favorites
